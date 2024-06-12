@@ -1,0 +1,5 @@
+pb_data
+*.exe
+pocketbase
+*.old
+*.OLD
