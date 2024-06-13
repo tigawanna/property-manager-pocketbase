@@ -12,7 +12,7 @@ cronAdd("bumpBillsEveryMonth", "5 0 1 * *", () => {
 
 function getPeriodBill() {
     const records = $app.dao().findRecordsByFilter(
-      "utility_bills", // collection
+      "property_bills", // collection
       "month = {:month} && year = {:year}", // filter
       "-created", // sort
       500, // limit
@@ -26,7 +26,7 @@ function getPeriodBill() {
   const bills = getPeriodBill();
   for (const bill of bills) {
     if (!bill) return;
-    const collection = $app.dao().findCollectionByNameOrId("utility_bills");
+    const collection = $app.dao().findCollectionByNameOrId("property_bills");
     const record = new Record(collection);
     const form = new RecordUpsertForm($app, record);
 
