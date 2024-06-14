@@ -1,16 +1,16 @@
 /// <reference path="../pb_data/types.d.ts" />
 migrate((db) => {
   const collection = new Collection({
-    "id": "9otlvzvr3fep7h1",
-    "created": "2024-06-13 15:02:06.514Z",
-    "updated": "2024-06-13 15:02:06.514Z",
+    "id": "h5sv12jaz4qppns",
+    "created": "2024-06-14 13:46:25.048Z",
+    "updated": "2024-06-14 13:46:25.048Z",
     "name": "property_payments",
     "type": "base",
     "system": false,
     "schema": [
       {
         "system": false,
-        "id": "ikldgvhc",
+        "id": "rsnbwmms",
         "name": "amount",
         "type": "number",
         "required": false,
@@ -24,23 +24,21 @@ migrate((db) => {
       },
       {
         "system": false,
-        "id": "e3etqpod",
-        "name": "mode",
-        "type": "select",
+        "id": "9ntcfnqt",
+        "name": "identifier",
+        "type": "text",
         "required": false,
         "presentable": false,
         "unique": false,
         "options": {
-          "maxSelect": 1,
-          "values": [
-            "mpesa",
-            "bank"
-          ]
+          "min": null,
+          "max": null,
+          "pattern": ""
         }
       },
       {
         "system": false,
-        "id": "dkgjtfwu",
+        "id": "fmabtjfl",
         "name": "shop",
         "type": "relation",
         "required": false,
@@ -52,6 +50,20 @@ migrate((db) => {
           "minSelect": null,
           "maxSelect": 1,
           "displayFields": null
+        }
+      },
+      {
+        "system": false,
+        "id": "lvg17dvy",
+        "name": "description",
+        "type": "text",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": null,
+          "pattern": ""
         }
       }
     ],
@@ -67,7 +79,7 @@ migrate((db) => {
   return Dao(db).saveCollection(collection);
 }, (db) => {
   const dao = new Dao(db);
-  const collection = dao.findCollectionByNameOrId("9otlvzvr3fep7h1");
+  const collection = dao.findCollectionByNameOrId("h5sv12jaz4qppns");
 
   return dao.deleteCollection(collection);
 })

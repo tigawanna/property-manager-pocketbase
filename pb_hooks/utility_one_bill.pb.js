@@ -2,7 +2,7 @@
 /// <reference path="../pb_data/types.d.ts" />
 routerAdd(
   "GET",
-  "/custom_one_property_bill",
+  "/custom_utilities_one_bill",
   (c) => {
     try {
       function isParamEmpty(param, default_value) {
@@ -47,7 +47,7 @@ IFNULL(curr.id,"blank") as curr_bill_id,
 IFNULL(prev.id,"blank") as prev_bill_id,
 
 sh.shop_number as shop_number,
-te.name as shop_name,
+te.username as shop_name,
 sh."order" as list_order,
 
 IFNULL(curr.month,0) as curr_month,
@@ -65,12 +65,12 @@ IFNULL((curr.water_readings - prev.water_readings),0)water_diff
 
 
 
-FROM property_shops sh
-LEFT JOIN property_bills as curr
+FROM utility_shops sh
+LEFT JOIN utility_bills as curr
 ON curr.shop = sh.id AND curr.id = {:curr_bill}
-LEFT JOIN property_bills as prev
+LEFT JOIN utility_bills as prev
 ON prev.shop = sh.id AND prev.id = {:prev_bill}
-LEFT JOIN property_tenants te
+LEFT JOIN utility_tenants te
 ON te.id = sh.tenant
 ORDER BY sh."order";
       `
@@ -88,13 +88,13 @@ ORDER BY sh."order";
       return c.json(200, { result });
     } catch (e) {
       return c.json(500, {
-        error: ` Error getting custom_one_property_bill : ${e.message}`,
+        error: ` Error getting custom_utilities_one_bill : ${e.message}`,
       });
     }
   } /* optional middlewares */
 );
 
-// http://127.0.0.1:8090/custom_property_bills?curr_year=2023&prev_year=2023&curr_month=10&prev_month=10
+// http://127.0.0.1:8090/custom_utility_bills?curr_year=2023&prev_year=2023&curr_month=10&prev_month=10
 //  parametes requered
 // curr_year: c.queryParam("curr_year") : current year
 // prev_year: c.queryParam("prev_year") : previous year

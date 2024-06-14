@@ -1,19 +1,19 @@
 /// <reference path="../pb_data/types.d.ts" />
 migrate((db) => {
   const collection = new Collection({
-    "id": "8idqd5zy0o1s6qg",
-    "created": "2024-06-13 15:28:59.566Z",
-    "updated": "2024-06-13 15:28:59.566Z",
-    "name": "property_reciept",
+    "id": "dmmmoz8z69hapxa",
+    "created": "2024-06-14 13:51:01.860Z",
+    "updated": "2024-06-14 13:51:01.860Z",
+    "name": "property_reciepts",
     "type": "base",
     "system": false,
     "schema": [
       {
         "system": false,
-        "id": "ywbwkdog",
-        "name": "receipt_number",
+        "id": "x1hvqsi6",
+        "name": "reciept_number",
         "type": "number",
-        "required": true,
+        "required": false,
         "presentable": false,
         "unique": false,
         "options": {
@@ -24,14 +24,14 @@ migrate((db) => {
       },
       {
         "system": false,
-        "id": "zjdhay9u",
-        "name": "payments",
+        "id": "81dhefh3",
+        "name": "payment",
         "type": "relation",
         "required": false,
         "presentable": false,
         "unique": false,
         "options": {
-          "collectionId": "9otlvzvr3fep7h1",
+          "collectionId": "h5sv12jaz4qppns",
           "cascadeDelete": false,
           "minSelect": null,
           "maxSelect": null,
@@ -40,7 +40,7 @@ migrate((db) => {
       },
       {
         "system": false,
-        "id": "tvqfda3b",
+        "id": "pmexjajt",
         "name": "shop",
         "type": "relation",
         "required": false,
@@ -48,6 +48,22 @@ migrate((db) => {
         "unique": false,
         "options": {
           "collectionId": "zb1etrv0i3olw5p",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
+        }
+      },
+      {
+        "system": false,
+        "id": "pxmlfxkd",
+        "name": "by",
+        "type": "relation",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "collectionId": "wm4hxo3d8smngmu",
           "cascadeDelete": false,
           "minSelect": null,
           "maxSelect": 1,
@@ -67,7 +83,7 @@ migrate((db) => {
   return Dao(db).saveCollection(collection);
 }, (db) => {
   const dao = new Dao(db);
-  const collection = dao.findCollectionByNameOrId("8idqd5zy0o1s6qg");
+  const collection = dao.findCollectionByNameOrId("dmmmoz8z69hapxa");
 
   return dao.deleteCollection(collection);
 })
